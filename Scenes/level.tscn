@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=3 uid="uid://djuo6f57k7g0g"]
+
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_cnudj"]
+[ext_resource type="PackedScene" uid="uid://8nsf0semj5tp" path="res://Scenes/planet.tscn" id="1_lb3j4"]
+[ext_resource type="Texture2D" uid="uid://cuuqbxt5qfkrx" path="res://Resources/Space.png" id="2_1c0db"]
+[ext_resource type="PackedScene" uid="uid://b2h20ywvgspa5" path="res://Scenes/player.tscn" id="2_4jewq"]
+[ext_resource type="PackedScene" uid="uid://dv281ftisnbsc" path="res://Scenes/target.tscn" id="3_67nhc"]
+[ext_resource type="PackedScene" uid="uid://cn5ddg2lhtt0y" path="res://Scenes/userInterface.tscn" id="5_k8lu6"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_cnudj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_1c0db")
+
+[node name="Planet" parent="." instance=ExtResource("1_lb3j4")]
+position = Vector2(344, 293)
+
+[node name="Target" parent="Planet" groups=["DeliveryTargets"] instance=ExtResource("3_67nhc")]
+position = Vector2(3, 73)
+rotation = 3.14159
+
+[node name="Target2" parent="Planet" groups=["DeliveryTargets"] instance=ExtResource("3_67nhc")]
+position = Vector2(72, 8)
+rotation = 1.57079
+
+[node name="Target3" parent="Planet" groups=["DeliveryTargets"] instance=ExtResource("3_67nhc")]
+position = Vector2(-72, -12)
+rotation = -1.309
+
+[node name="Player" parent="Planet" instance=ExtResource("2_4jewq")]
+position = Vector2(0, -86)
+
+[node name="Planet2" parent="." instance=ExtResource("1_lb3j4")]
+position = Vector2(641, 174)
+
+[node name="CollisionShape2D" parent="Planet2" index="0"]
+scale = Vector2(1.3, 1.3)
+
+[node name="Sprite2D" parent="Planet2" index="1"]
+modulate = Color(1, 0.541176, 0.631373, 1)
+rotation = -1.26885
+scale = Vector2(1.3, 1.3)
+
+[node name="Area2D" parent="Planet2" index="2"]
+scale = Vector2(1.3, 1.3)
+
+[node name="Target2" parent="Planet2" groups=["DeliveryTargets"] instance=ExtResource("3_67nhc")]
+position = Vector2(93, 8)
+rotation = 1.57079
+
+[node name="Target3" parent="Planet2" groups=["DeliveryTargets"] instance=ExtResource("3_67nhc")]
+position = Vector2(5, -93)
+
+[node name="Target4" parent="Planet2" groups=["DeliveryTargets"] instance=ExtResource("3_67nhc")]
+position = Vector2(-79, 48)
+rotation = -2.09439
+
+[node name="Planet3" parent="." instance=ExtResource("1_lb3j4")]
+position = Vector2(641, 462)
+
+[node name="CollisionShape2D" parent="Planet3" index="0"]
+scale = Vector2(0.7, 0.7)
+
+[node name="Sprite2D" parent="Planet3" index="1"]
+modulate = Color(0.529412, 0.545098, 1, 1)
+rotation = 0.877901
+scale = Vector2(0.7, 0.7)
+
+[node name="Target" parent="Planet3" groups=["DeliveryTargets"] instance=ExtResource("3_67nhc")]
+position = Vector2(54, 0)
+rotation = 1.57079
+
+[node name="Target2" parent="Planet3" groups=["DeliveryTargets"] instance=ExtResource("3_67nhc")]
+position = Vector2(-47, -26)
+rotation = -1.0472
+
+[node name="Target3" parent="Planet3" groups=["DeliveryTargets"] instance=ExtResource("3_67nhc")]
+position = Vector2(16, -51)
+rotation = 0.261799
+
+[node name="Target4" parent="Planet3" groups=["DeliveryTargets"] instance=ExtResource("3_67nhc")]
+position = Vector2(-14, 52)
+rotation = -2.87979
+
+[node name="UserInterface" parent="." instance=ExtResource("5_k8lu6")]
+
+[connection signal="deliveriesComplete" from="." to="UserInterface" method="_on_level_deliveries_complete"]
+[connection signal="foodLaunched" from="Planet/Player" to="UserInterface" method="_on_player_food_launched"]
+
+[editable path="Planet2"]
+[editable path="Planet3"]

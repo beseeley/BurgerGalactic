@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn5ddg2lhtt0y"]
+
+[ext_resource type="Script" path="res://Scripts/userInterface.gd" id="1_8ae7c"]
+[ext_resource type="Texture2D" uid="uid://bque1hyig3wmx" path="res://Resources/BurgerGalactic.png" id="2_rmouh"]
+
+[node name="UserInterface" type="CanvasLayer"]
+script = ExtResource("1_8ae7c")
+
+[node name="BurgersLaunched" type="Label" parent="."]
+visible = false
+offset_left = 1097.0
+offset_top = 12.0
+offset_right = 1137.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="BurgersLaunchedMessage" type="Label" parent="."]
+visible = false
+offset_left = 847.0
+offset_top = 15.0
+offset_right = 1099.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 27
+text = "Burgers Launched: "
+
+[node name="MainSplash" type="TextureRect" parent="."]
+offset_left = 7.0
+offset_top = -4.0
+offset_right = 1927.0
+offset_bottom = 1076.0
+scale = Vector2(0.594555, 0.604636)
+texture = ExtResource("2_rmouh")
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 975.0
+offset_top = 537.0
+offset_right = 1101.0
+offset_bottom = 614.0
+theme_override_font_sizes/font_size = 50
+text = "Start"
+
+[node name="RestartButton" type="Button" parent="."]
+visible = false
+offset_left = 942.0
+offset_top = 537.0
+offset_right = 1126.0
+offset_bottom = 614.0
+theme_override_font_sizes/font_size = 50
+text = "Restart"
+
+[node name="WinButton" type="Label" parent="."]
+visible = false
+offset_left = 324.0
+offset_top = 537.0
+offset_right = 878.0
+offset_bottom = 609.0
+theme_override_font_sizes/font_size = 50
+text = "You fed all the planets!"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2h20ywvgspa5"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_mdly6"]
+[ext_resource type="Texture2D" uid="uid://etxlgapxxoxu" path="res://Resources/Player2.png" id="2_871ud"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_mdly6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_871ud")
+
+[node name="FoodContainer" type="Node" parent="."]

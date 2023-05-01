@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://8nsf0semj5tp"]
+
+[ext_resource type="Texture2D" uid="uid://bmp5vphaqjy2g" path="res://Resources/Planet2.png" id="1_1w3iw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dw1j3"]
+radius = 65.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fx5ey"]
+radius = 97.0464
+
+[node name="Planet" type="StaticBody2D"]
+position = Vector2(487, 265)
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dw1j3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1w3iw")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 5
+gravity_space_override = 3
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_fx5ey")
